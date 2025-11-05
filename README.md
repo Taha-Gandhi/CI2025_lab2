@@ -1,5 +1,5 @@
 # CI2025_lab2
-lab 2 The Salesman Problem
+lab 2 Traveling Salesman Problem
 -----
 
 # 🇮🇹 Traveling Salesperson Problem (TSP) Solver: Italian Cities
@@ -8,10 +8,7 @@ This project implements a solution to the classic Traveling Salesperson Problem 
 
 ## ⚙️ Project Structure
 
-The project consists of two core Python files:
-
-1.  **`tsp_distances_fixed.py`**: Defines the data (cities and distance matrix).
-2.  **`tsp_ga_core.py`**: Contains the full Genetic Algorithm implementation and executes the solver.
+The project consists of one file called **`tsp.ipynb`** that contains the full Genetic Algorithm (from EC) implementation and executes the solver.
 
 ## 🗺️ The Problem Data
 
@@ -27,7 +24,7 @@ The problem uses a $20 \times 20$ distance matrix derived from **real-world road
 
 ### ⚠️ Data Note: Triangle Inequality
 
-The matrix, defined in `tsp_distances_fixed.py`, is **symmetric** (distance A to B equals B to A) but **does not strictly satisfy the Triangle Inequality**. This is common for real-world road networks, where geographical obstacles (mountains, coastlines) or specific highway layouts cause the distance through a third city to sometimes be shorter than the direct road distance.
+The matrix, defined as `DISTANCE_MATRIX`, uses real world data about actual distances in kms from place A to place B. This matrix is **symmetric** (distance A to B equals B to A) but **does not strictly satisfy the Triangle Inequality**. This is common for real-world road networks, where geographical obstacles (mountains, coastlines) or specific highway layouts cause the distance through a third city to sometimes be shorter than the direct road distance.
 
 ## 🧬 Genetic Algorithm (GA) Implementation Details
 
@@ -51,16 +48,7 @@ The Genetic Algorithm is chosen because it offers a highly effective method for 
 
 ### 5\. **Mutation (Swap Mutation)**
 
-  * **Swap Mutation** is applied to offspring with a small probability (`MUTATION_RATE=5%`). It randomly swaps the positions of two cities in the tour. This process introduces necessary randomness to help the algorithm avoid getting stuck in local minimums (sub-optimal solutions).
-  * **Elitism (`ELITE_SIZE=2`)** ensures that the two best tours from the current generation are always carried over unchanged to the next, guaranteeing that the best-found distance never degrades.
-
-## ▶️ How to Run the Solver
-
-To execute the solver and find the best route, ensure both `tsp_distances_fixed.py` and `tsp_ga_core.py` are in the same directory, and then run the main solver file:
-
-```bash
-python tsp_ga_core.py
-```
+  * **Swap Mutation** is applied to offspring with a small probability (`MUTATION_RATE=5%`). It randomly swaps the positions of two cities in the tour. This process introduces necessary randomness to help the algorithm avoid getting stuck in local minimums (sub-optimal solutions). It also garuantees that the best found result never degrades.
 
 ### Expected Output
 
